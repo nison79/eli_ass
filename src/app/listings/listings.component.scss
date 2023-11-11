@@ -1,0 +1,79 @@
+.card {
+  // Adjust the card styling here
+  font-family: "Euclid Circular A", sans-serif;
+  background-color: #ffffff;
+  margin: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  .absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+  }
+  .card-header {
+    // Style for the card header, where the image is located
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    img {
+      width: 100%;
+      height: auto; // Adjust height as necessary
+    }
+
+    .card-img-top {
+      width: 50%;
+      height: auto; // Adjust height as necessary
+      object-fit: cover;
+      padding: 1rem;
+    }
+  }
+
+  .card-body {
+    // Card body styling here
+    margin: 2rem;
+    padding: 1rem;
+    .card-title {
+      // Title styling
+      font-size: 2rem;
+    }
+
+    .card-rating {
+      // Rating section styling
+      .star-rating {
+        color: #ffc107; // Bootstrap warning color for stars
+      }
+
+      .rating-number,
+      .review-count {
+        // Number and review count styling
+        margin-left: 0.5rem; // Spacing
+      }
+    }
+
+    .card-text {
+      // Text styling
+
+      font-size: 1rem;
+      padding: 0.5rem 0rem 0.5rem 0rem;
+    }
+    .btn-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .btn-custom {
+        // Button styling
+        text-decoration: none;
+      }
+    }
+    .btn-warning {
+      // Button styling
+      text-decoration: none;
+    }
+
+    .btn-link {
+      // Link styling
+    }
+  }
+}

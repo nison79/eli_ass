@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div
+      class="col-md-4 col-sm-8 col-xs-12 d-flex"
+      *ngFor="let listing of listings"
+    >
+      <!-- Use Angular's *ngFor to loop through your listings -->
+      <div class="card">
+        <div class="absolute">
+          <button class="btn btn-outline">
+            <i class="bi bi-heart"></i>
+          </button>
+        </div>
+        <div class="card-header">
+          <img [src]="listing.image" class="card-img-top" alt="..." />
+          <!-- Favorite heart icon can go here -->
+        </div>
+        <div class="card-body">
+          <p class="card-title">{{ listing.name }}</p>
+          <div class="card-rating">
+            <span class="star-rating">
+              ★★★★☆
+              <!-- Replace with dynamic rating if needed -->
+            </span>
+            <span class="rating-number">{{ listing.star_rating }}/5</span>
+            <span class="review-count"
+              >{{ listing.no_of_reviews }} reviews</span
+            >
+          </div>
+          <p class="card-text">{{ listing.desc }}</p>
+          <div class="btn-link">
+            <button type="button" class="btn btn-warning btn-lg btn-custom">
+              Visit website
+            </button>
+            <a class="btn btn-link">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
