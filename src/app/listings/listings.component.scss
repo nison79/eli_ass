@@ -31,7 +31,6 @@
   }
 
   .card-body {
-    // Card body styling here
     margin: 2rem;
     padding: 1rem;
     .card-title {
@@ -62,10 +61,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      .btn-custom {
-        // Button styling
-        text-decoration: none;
-      }
     }
     .btn-warning {
       // Button styling
@@ -73,7 +68,11 @@
     }
 
     .btn-link {
-      // Link styling
+      text-decoration: none;
     }
   }
+}
+
+.text {
+  font-family: "Euclid Circular A", sans-serif;
 }

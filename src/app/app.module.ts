@@ -6,10 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListingsComponent } from './listings/listings.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { FilterDashboardComponent } from './filter-dashboard/filter-dashboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, ListingsComponent, FavoritesComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    ListingsComponent,
+    FavoritesComponent,
+    FilterDashboardComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

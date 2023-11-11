@@ -1,0 +1,73 @@
+<div [formGroup]="filterForm" class="container container-fluid">
+  <div class="row">
+    <div class="col">
+      <!-- Dropdown for License -->
+
+      <select
+        (change)="onLicenseChange($event)"
+        formControlName="license"
+        class="form-select"
+        aria-label="License dropdown"
+      >
+        <option value="">Select License</option>
+        <option [value]="i.name" *ngFor="let i of distinctLicenseFilters">
+          {{ i.name }}
+        </option>
+      </select>
+    </div>
+    <div class="col">
+      <!-- Dropdown for Deployment -->
+      <select
+        formControlName="deployment"
+        (change)="onDeploymentChange($event)"
+        class="form-select"
+        aria-label="Deployment dropdown"
+      >
+        <option value="">Select Deployment</option>
+        <option [value]="i.name" *ngFor="let i of distinctDeploymentFilters">
+          {{ i.name }}
+        </option>
+      </select>
+    </div>
+    <div class="col">
+      <!-- Dropdown for Industry -->
+      <select
+        formControlName="industry"
+        (change)="onIndustryChange($event)"
+        class="form-select"
+        aria-label="Industry dropdown"
+      >
+        <option value="">Select Industry</option>
+        <option [value]="i.name" *ngFor="let i of distinctIndustryFilters">
+          {{ i.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Tags for selected filters -->
+  <div class="row mt-3">
+    <div class="col">
+      <div class="d-flex flex-wrap gap-2">
+        <!-- These would be dynamically generated with *ngFor and can be made dismissible -->
+        <button
+          *ngFor="let badge of selectedFilters"
+          class="badge bg-secondary"
+          (click)="removeFilter(badge)"
+        >
+          {{ badge }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Listings and clear filter button -->
+  <div class="row mt-3">
+    <div class="col">
+      <span>{{ filteredListings.length }}</span>
+      <button (click)="clearFilters()" class="btn btn-link">
+        Clear filters
+      </button>
+    </div>
+  </div>
+</div>

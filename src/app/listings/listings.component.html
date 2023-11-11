@@ -1,5 +1,24 @@
 <div class="container">
   <div class="row">
+    <div class="col-12 d-flex flex-row-reverse">
+      <div class="col-2 p-3">
+        <select
+          (change)="onSortingChange($event)"
+          class="form-select text"
+          aria-label="Sorting"
+        >
+          <option value="nameAsc">Name ASC</option>
+          <option value="nameDesc">Name DESC</option>
+          <option value="reviewsAsc">Reviews ASC</option>
+          <option value="reviewsDesc">Reviews DESC</option>
+        </select>
+      </div>
+      <div class="col-1 p-3 text">
+        <p for="sorting">Sort by:</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div
       class="col-md-4 col-sm-8 col-xs-12 d-flex"
       *ngFor="let listing of listings"
@@ -7,7 +26,11 @@
       <!-- Use Angular's *ngFor to loop through your listings -->
       <div class="card">
         <div class="absolute">
-          <button class="btn btn-outline">
+          <button
+            (click)="toggleFavourite(listing)"
+            [class.btn-danger]="isFavourite(listing)"
+            class="btn"
+          >
             <i class="bi bi-heart"></i>
           </button>
         </div>
@@ -19,8 +42,7 @@
           <p class="card-title">{{ listing.name }}</p>
           <div class="card-rating">
             <span class="star-rating">
-              ★★★★☆
-              <!-- Replace with dynamic rating if needed -->
+              {{ getStars(listing.star_rating) }}
             </span>
             <span class="rating-number">{{ listing.star_rating }}/5</span>
             <span class="review-count"
@@ -29,7 +51,10 @@
           </div>
           <p class="card-text">{{ listing.desc }}</p>
           <div class="btn-link">
-            <button type="button" class="btn btn-warning btn-lg btn-custom">
+            <button
+              type="button"
+              class="btn btn-warning btn-lg btn-rounded btn-custom"
+            >
               Visit website
             </button>
             <a class="btn btn-link">Read more</a>
