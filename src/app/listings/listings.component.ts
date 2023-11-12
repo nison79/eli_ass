@@ -63,7 +63,6 @@ export class ListingsComponent implements OnInit, OnDestroy {
     } else {
       this.favourites.splice(index, 1);
     }
-    console.log('trigger', this.favourites);
     localStorage.setItem('favourites', JSON.stringify(this.favourites));
     this.dataService.sendFavourites(this.favourites);
   }

@@ -215,7 +215,6 @@ export class FilterDashboardComponent {
   }
 
   removeFilter(filter: string): void {
-    console.log(filter);
     if (filter === 'Free' || filter === 'Paid') {
       this.license.setValue('');
       this.updateSelectedFilters();
