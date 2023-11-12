@@ -40,32 +40,32 @@ export class FilterDashboardComponent {
   constructor(private dataService: DataService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.selectedFilters = JSON.parse(
-      localStorage.getItem('selectedFilters') || '[]'
-    );
-    console.log(this.selectedFilters);
-
     this.selectedFilters.forEach((filter) => {
       if (this.allFilters.includes(filter)) {
         this.filterForm.get(filter)?.setValue(true);
       }
     });
-    console.log(this.filterForm?.value);
+    const selectedFiltersFromStorage = localStorage.getItem('selectedFilters');
+    this.selectedFilters =
+      selectedFiltersFromStorage && selectedFiltersFromStorage !== 'undefined'
+        ? JSON.parse(selectedFiltersFromStorage)
+        : [];
 
     const filteredListingsFromLocalStorage =
       localStorage.getItem('filteredListings');
-    this.filteredListings = filteredListingsFromLocalStorage
-      ? JSON.parse(filteredListingsFromLocalStorage)
-      : [];
+    console.log(filteredListingsFromLocalStorage);
+    if (filteredListingsFromLocalStorage) {
+      this.filteredListings = filteredListingsFromLocalStorage
+        ? JSON.parse(filteredListingsFromLocalStorage)
+        : [];
+    }
 
-    console.log(this.filteredListings.length);
     this.sendData(this.filteredListings);
     this.initForm();
-    // this.clearFilters();
+
     this.subs.push(
       this.dataService.getListings().subscribe((response: ListingsResponse) => {
         this.listings = response.data;
-        this.filteredListings = response.data;
 
         // Create an array of distinct industry filters
         this.distinctIndustryFilters = this.listings.reduce(
@@ -184,10 +184,14 @@ export class FilterDashboardComponent {
     this.industry.setValue('');
     this.selectedFilters = [];
 
-    localStorage.setItem('selectedFilters', JSON.stringify([]));
-
     this.filteredListings = this.filterListings();
     console.log(this.filteredListings);
+    localStorage.setItem('selectedFilters', JSON.stringify([]));
+    localStorage.setItem(
+      'filteredListings',
+      JSON.stringify(this.filteredListings)
+    );
+
     this.sendData(this.filteredListings);
   }
 
@@ -197,8 +201,6 @@ export class FilterDashboardComponent {
       'filteredListings',
       JSON.stringify(this.filteredListings)
     );
-
-    console.log(this.filteredListings.length);
   }
 
   updateSelectedFilters(): void {
@@ -212,8 +214,6 @@ export class FilterDashboardComponent {
       'selectedFilters',
       JSON.stringify(this.selectedFilters)
     );
-
-    console.log(this.selectedFilters);
   }
 
   removeFilter(filter: string): void {
@@ -244,7 +244,6 @@ export class FilterDashboardComponent {
     );
 
     this.sendData(this.filteredListings);
-    console.log(this.filteredListings.length);
   }
 
   // this method is used to send the filtered listings to the listings component

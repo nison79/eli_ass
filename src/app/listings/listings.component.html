@@ -20,10 +20,9 @@
   </div>
   <div class="row">
     <div
-      class="col-md-4 col-sm-8 col-xs-12 d-flex"
+      class="col-sm-12 col-sm-8 col-md-6 col-lg-4 d-flex"
       *ngFor="let listing of listings"
     >
-      <!-- Use Angular's *ngFor to loop through your listings -->
       <div class="card">
         <div class="absolute">
           <button
@@ -36,7 +35,6 @@
         </div>
         <div class="card-header">
           <img [src]="listing.image" class="card-img-top" alt="..." />
-          <!-- Favorite heart icon can go here -->
         </div>
         <div class="card-body">
           <p class="card-title">{{ listing.name }}</p>

@@ -54,6 +54,7 @@ export class ListingsComponent implements OnInit, OnDestroy {
     } else if (sortOption.target.value === 'reviewsDesc') {
       this.listings.sort((a, b) => b.no_of_reviews - a.no_of_reviews);
     }
+    localStorage.setItem('filteredListings', JSON.stringify(this.listings));
     return this.listings;
   }
 
