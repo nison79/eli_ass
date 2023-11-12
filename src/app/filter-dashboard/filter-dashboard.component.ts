@@ -53,7 +53,6 @@ export class FilterDashboardComponent {
 
     const filteredListingsFromLocalStorage =
       localStorage.getItem('filteredListings');
-    console.log(filteredListingsFromLocalStorage);
     if (filteredListingsFromLocalStorage) {
       this.filteredListings = filteredListingsFromLocalStorage
         ? JSON.parse(filteredListingsFromLocalStorage)
@@ -185,7 +184,6 @@ export class FilterDashboardComponent {
     this.selectedFilters = [];
 
     this.filteredListings = this.filterListings();
-    console.log(this.filteredListings);
     localStorage.setItem('selectedFilters', JSON.stringify([]));
     localStorage.setItem(
       'filteredListings',

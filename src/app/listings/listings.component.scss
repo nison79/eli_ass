@@ -1,10 +1,10 @@
 .card {
   // Adjust the card styling here
   font-family: "Euclid Circular A", sans-serif;
-  background-color: #ffffff;
+
   margin: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
-    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  // box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+  //   rgb(209, 213, 219) 0px 0px 0px 1px inset;
   .absolute {
     position: absolute;
     top: 0;
@@ -20,7 +20,6 @@
     height: 15rem;
     img {
       width: 40%;
-
     }
 
     .card-img-top {
@@ -28,6 +27,9 @@
       object-fit: cover;
       padding: 1rem;
     }
+  }
+  .card-footer {
+    padding: 2rem 0rem;
   }
 
   .card-body {
@@ -52,8 +54,6 @@
     }
 
     .card-text {
-      // Text styling
-
       font-size: 1rem;
       padding: 0.5rem 0rem 0.5rem 0rem;
     }
@@ -63,7 +63,6 @@
       align-items: center;
     }
     .btn-warning {
-      // Button styling
       text-decoration: none;
     }
 

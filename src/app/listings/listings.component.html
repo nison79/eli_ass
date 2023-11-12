@@ -23,7 +23,7 @@
       class="col-sm-12 col-sm-8 col-md-6 col-lg-4 d-flex"
       *ngFor="let listing of listings"
     >
-      <div class="card">
+      <div class="card text-black bg-light">
         <div class="absolute">
           <button
             (click)="toggleFavourite(listing)"
@@ -36,7 +36,7 @@
         <div class="card-header">
           <img [src]="listing.image" class="card-img-top" alt="..." />
         </div>
-        <div class="card-body">
+        <div class="card-body bg-light">
           <p class="card-title">{{ listing.name }}</p>
           <div class="card-rating">
             <span class="star-rating">
@@ -48,7 +48,11 @@
             >
           </div>
           <p class="card-text">{{ listing.desc }}</p>
-          <div class="btn-link">
+        </div>
+        <div
+          class="card-footer d-flex justify-content-center align-items-center"
+        >
+          <div class="d-flex flex-column align-items-center">
             <button
               type="button"
               class="btn btn-warning btn-lg btn-rounded btn-custom"

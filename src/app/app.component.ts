@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from './data.service';
 import { Listing } from './shared/listing.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,9 @@ export class AppComponent {
 
   listings: Listing[] = [];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.router.navigate(['/']);
+  }
 }

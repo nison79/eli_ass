@@ -9,9 +9,9 @@ import { Listing, ListingsResponse } from './shared/listing.interface';
 export class DataService {
   public dataUrl = 'assets/data.json';
   private dataSubject = new Subject<Listing[]>();
+  private favouritesSubject = new Subject<Listing[]>();
 
   constructor(private http: HttpClient) {}
-
   getListings(): Observable<ListingsResponse> {
     return this.http.get<ListingsResponse>(this.dataUrl);
   }
@@ -28,4 +28,15 @@ export class DataService {
     this.dataSubject.next([]);
   }
 
+  sendFavourites(data: Listing[]) {
+    this.favouritesSubject.next(data);
+  }
+
+  getFavourites(): Observable<Listing[]> {
+    return this.favouritesSubject.asObservable();
+  }
+
+  clearFavourites() {
+    this.favouritesSubject.next([]);
+  }
 }

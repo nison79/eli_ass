@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Listing, ListingsResponse } from '../shared/listing.interface';
+import { Listing } from '../shared/listing.interface';
 import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 
@@ -19,7 +19,6 @@ export class ListingsComponent implements OnInit, OnDestroy {
     this.subs.push(
       (this.dataSubscription = this.dataService.getData().subscribe((data) => {
         this.listings = data;
-        console.log(this.listings);
       }))
     );
   }
@@ -44,7 +43,6 @@ export class ListingsComponent implements OnInit, OnDestroy {
   }
 
   onSortingChange(sortOption: any): Listing[] {
-    console.log(sortOption);
     if (sortOption.target.value === 'nameAsc') {
       this.listings.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortOption.target.value === 'nameDesc') {
@@ -65,7 +63,9 @@ export class ListingsComponent implements OnInit, OnDestroy {
     } else {
       this.favourites.splice(index, 1);
     }
+    console.log('trigger', this.favourites);
     localStorage.setItem('favourites', JSON.stringify(this.favourites));
+    this.dataService.sendFavourites(this.favourites);
   }
 
   isFavourite(listing: any): boolean {

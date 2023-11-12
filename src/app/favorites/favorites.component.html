@@ -1,1 +1,103 @@
-<p>favorites works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex flex-row-reverse">
+      <div class="col-1 mt-2">
+        <button
+          type="button"
+          class="btn btn-primary btn-danger"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          [disabled]="!favorites.length"
+        >
+          Delete All
+        </button>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      #deleteModal
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete ALL</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Do you really want to delete all your favorites ?
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              (click)="removeAllFavorites(deleteModal)"
+              data-bs-dismiss="modal"
+              type="button"
+              class="btn btn-primary btn-danger"
+            >
+              Delete ALL
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      class="col-sm-12 col-sm-8 col-md-6 col-lg-4 d-flex"
+      *ngFor="let favorite of favorites"
+    >
+      <div class="card text-black bg-light">
+        <div class="absolute">
+          <button (click)="removeFavorite(favorite)" class="btn btn-danger">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+        <div class="card-header">
+          <img [src]="favorite.image" class="card-img-top" alt="..." />
+        </div>
+        <div class="card-body bg-light">
+          <p class="card-title">{{ favorite.name }}</p>
+          <div class="card-rating">
+            <span class="star-rating">
+              {{ getStars(favorite.star_rating) }}
+            </span>
+            <span class="rating-number">{{ favorite.star_rating }}/5</span>
+            <span class="review-count"
+              >{{ favorite.no_of_reviews }} reviews</span
+            >
+          </div>
+          <p class="card-text">{{ favorite.desc }}</p>
+        </div>
+        <div
+          class="card-footer d-flex justify-content-center align-items-center"
+        >
+          <div class="d-flex flex-column align-items-center">
+            <button
+              type="button"
+              class="btn btn-warning btn-lg btn-rounded btn-custom"
+            >
+              Visit website
+            </button>
+            <a class="btn btn-link">Read more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

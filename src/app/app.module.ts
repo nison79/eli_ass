@@ -8,6 +8,7 @@ import { ListingsComponent } from './listings/listings.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { FilterDashboardComponent } from './filter-dashboard/filter-dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ListingsComponent,
     FavoritesComponent,
     FilterDashboardComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
